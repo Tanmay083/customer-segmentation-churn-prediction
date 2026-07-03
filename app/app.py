@@ -77,7 +77,7 @@ if uploaded_file:
     if 'Churn' in df_pred.columns:
         df_pred = df_pred.drop(columns=['Churn'])  # never a feature, only a label if present
 
-    cat_cols = df_pred.select_dtypes(include='object').columns.tolist()
+    cat_cols = df_pred.select_dtypes(include=['object', 'string']).columns.tolist()
     df_encoded = pd.get_dummies(df_pred, columns=cat_cols, drop_first=True)
 
     # Align columns to match training data exactly (drops extras, fills missing with 0)
