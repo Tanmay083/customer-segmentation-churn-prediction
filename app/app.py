@@ -1,18 +1,19 @@
-
+import os
 import streamlit as st
 import pandas as pd
 import joblib
 
-# Force Python to use your project root directory as the base path so it finds /models
-
 st.set_page_config(page_title="Customer Churn & Segmentation", layout="wide")
 st.title("📊 Customer Segmentation & Churn Prediction Dashboard")
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, '..', 'models')
+
 # Load saved models
-rf_model = joblib.load('models/churn_rf_model.pkl')
-scaler = joblib.load('models/rfm_scaler.pkl')
-kmeans = joblib.load('models/kmeans_model.pkl')
-model_columns = joblib.load('models/model_columns.pkl')
+rf_model = joblib.load(os.path.join(MODELS_DIR, 'churn_rf_model.pkl'))
+scaler = joblib.load(os.path.join(MODELS_DIR, 'rfm_scaler.pkl'))
+kmeans = joblib.load(os.path.join(MODELS_DIR, 'kmeans_model.pkl'))
+model_columns = joblib.load(os.path.join(MODELS_DIR, 'model_columns.pkl'))
 
 uploaded_file = st.file_uploader("Upload customer CSV", type=['csv'])
 
