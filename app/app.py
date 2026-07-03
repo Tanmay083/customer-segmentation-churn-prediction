@@ -1,10 +1,9 @@
-import os
+
 import streamlit as st
 import pandas as pd
 import joblib
 
 # Force Python to use your project root directory as the base path so it finds /models
-os.chdir(r"g:\projects\CHURN")
 
 st.set_page_config(page_title="Customer Churn & Segmentation", layout="wide")
 st.title("📊 Customer Segmentation & Churn Prediction Dashboard")
